@@ -31,8 +31,9 @@
    python app.py
    ```
 
-4. ブラウザでアクセス:
-   http://127.0.0.1:5000/
+## メインページURL
+
+https://goodtsurizao.github.io/market-analysis/
 
 ## ディレクトリ構成
 
