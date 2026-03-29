@@ -1,98 +1,98 @@
-# プロジェクト構成
+# 株データ分析プロジェクト
 
-本プロジェクトは、保守性・再利用性・拡張性を高めるために、モジュール化された構成を採用しています。
+このプロジェクトは、Webスクレイピングにより株データを自動収集し、分析を行うWebアプリケーションです。Flaskフレームワークを使用したシンプルなUIで、スクレイピング実行、データ分析、設定編集が可能です。
 
----
+## 機能
+
+- **スクレイピング実行**: 指定された証券コードの株データを収集
+- **データ分析**: 収集したデータを分析し、市場別カウントやテーマ別カウントを表示
+- **設定編集**: スクレイピングの設定（改ページ最大、遷移間隔）とコードリストを編集
+
+## 使用技術
+
+- **Python**: メイン言語
+- **Flask**: Webフレームワーク
+- **Selenium**: Webブラウザ自動操作
+- **BeautifulSoup**: HTML解析
+- **ChromeDriver**: ブラウザドライバ
+
+## インストールと実行
+
+1. 依存関係のインストール:
+   ```
+   pip install -r requirements.txt
+   ```
+
+2. ChromeDriverの配置:
+   `drivers/chromedriver.exe` にChromeDriverを配置
+
+3. 実行:
+   ```
+   python app.py
+   ```
+
+4. ブラウザでアクセス:
+   http://127.0.0.1:5000/
 
 ## ディレクトリ構成
 
 ```
-project-name/
+project/
 │
-├── README.md              # プロジェクト概要・使い方
-├── requirements.txt       # Pythonの依存関係
-├── .gitignore             # Gitで管理しないファイル
+├── README.md              # プロジェクト概要
+├── requirements.txt       # Python依存関係
+├── app.py                 # Flask Webアプリケーション
 │
 ├── data/
-│   ├── raw/               # 元データ（加工しない）
-│   └── processed/         # 加工済みデータ
+│   ├── raw/               # 元データ（codes.txt: 証券コードリスト）
+│   └── processed/         # 加工済みデータ（JSONファイル）
 │
-├── notebooks/             # 検証・分析用（Jupyter Notebook）
+├── drivers/               # ChromeDriver
+│   └── chromedriver.exe
 │
-├── src/                   # コアロジック（再利用可能なコード）
-│   ├── __init__.py
-│   ├── data/              # データ取得（API・スクレイピング等）
-│   ├── analysis/          # 分析ロジック
-│   └── utils/             # 共通処理
+├── scripts/               # 実行スクリプト
+│   ├── scraping/          # スクレイピング関連
+│   │   ├── scraping_main.py
+│   │   └── scraping_config.py
+│   └── analysis/          # 分析関連
+│       └── data_analysis.py
 │
-├── scripts/               # 実行用スクリプト（入口）
-│   ├── run_backtest.py
-│   └── update_data.py
+├── templates/             # HTMLテンプレート
+│   ├── index.html         # メインページ
+│   ├── scrape.html        # スクレイピングページ
+│   ├── analyze.html       # 分析ページ
+│   └── settings.html      # 設定ページ
 │
-└── tests/                 # テストコード（初期は空でもOK）
+└── tests/                 # テストコード（未実装）
 ```
-
----
 
 ## 設計方針
 
 ### 1. 役割の分離
 
-各ディレクトリの役割を明確に分けます：
+- `scripts/` : 実行スクリプト（スクレイピングと分析のエントリーポイント）
+- `data/` : データの保存
+- `templates/` : UIテンプレート
+- `app.py` : Webアプリのルーティングと処理
 
-* `data/` → データの保存
-* `src/` → ロジック（再利用可能）
-* `scripts/` → 実行処理
+### 2. 設定の外部化
 
----
+- `scraping_config.py` : スクレイピング設定
+- `codes.txt` : 証券コードリスト
 
-### 2. 再利用前提の設計
+### 3. データの再現性
 
-* `src/` 内のコードは使い回しを前提に作成する
-* `scripts/` にロジックを書きすぎない
+- 元データは `data/raw/` に保存
+- 加工データは `data/processed/` に保存
 
----
+## 使用方法
 
-### 3. データの再現性を担保
+1. メインページから各機能にアクセス
+2. 設定ページでコードリストとスクレイピング設定を編集
+3. スクレイピングページでデータを収集
+4. 分析ページで収集したデータを分析
 
-* `data/raw/` のデータは絶対に変更しない
-* 加工は必ず `data/processed/` に出力する
+## 注意事項
 
----
-
-### 4. 実行フローの明確化
-
-```
-scripts → src → data
-```
-
-* `scripts/` が `src/` を呼び出す
-* `src/` が `data/` を処理する
-
----
-
-## 補足
-
-* `notebooks/` は検証・試行用として使用する
-* 安定した処理は `src/` に移動する
-* `scripts/` は実行に特化させる
-
----
-
-## 最小構成（小規模プロジェクト向け）
-
-```
-project-name/
-├── src/
-├── scripts/
-└── data/
-```
-
----
-
-## 判断基準
-
-迷った場合は以下で判断：
-
-* 再利用する → `src/`
-* 単発で使う → `scripts/`
+- スクレイピングは対象サイトの利用規約を確認してください
+- 大量のアクセスは避け、適切な間隔を設定してください
