@@ -2,6 +2,7 @@ import bs4 # BeautifulSoupをインポート
 import traceback # エラーの内容を出力するためにインポート
 import time # 遅延させるためにインポート
 import json # JSONを扱うためにインポート
+import datetime # 日時を取得するためにインポート
 from selenium import webdriver # Seleniumをインポート
 from selenium.webdriver.chrome.options import Options # Chromeのオプションを設定するためにインポート
 from selenium.webdriver.chrome.service import Service # Chromeドライバーのサービスを管理するためにインポート
@@ -12,14 +13,12 @@ import scraping_config as config # 別ファイルに定数をまとめる場合
 
 # 定数の定義
 CHROMEDRIVER = r"C:\VSCode\WorkSpace\drivers\chromedriver.exe" # Chromeドライバーのパス
-PAGE_MAX = 3 # 改ページ（最大）
-INTERVAL_TIME = 2 # 遷移間隔（秒）
  
  
 # ドライバー準備（固定）
 def get_driver():
     options = Options() # オプションの作成
-    options.add_argument('--headless') # 実行時にブラウザを非表示にするオプション
+    # options.add_argument('--headless') # 実行時にブラウザを非表示にするオプション
     service = Service(CHROMEDRIVER) # ドライバーのパスを指定
     driver = webdriver.Chrome(service=service, options=options) # ドライバーを作成
     return driver
@@ -27,7 +26,7 @@ def get_driver():
 # URLからページのソースを取得する（固定）
 def get_source_from_page_main(driver, url):
     driver.get(url) # URLにアクセス
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'body'))) # ページが完全に読み込まれるまで待機
+    WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.TAG_NAME, 'body'))) # ページが完全に読み込まれるまで待機
     page = driver.page_source # ページのソースを取得
     return page
 
@@ -97,8 +96,8 @@ def get_data_from_source(src):
  
 # 証券コード一覧取得
 def get_code_list():
-#    result = ['1375', '1376', '1377', '1379', '1380', '1381', '1382', '1383', '1384']
-    result = ['431A']
+    with open('data/raw/codes.txt', 'r', encoding='utf-8') as f:
+        result = [line.strip() for line in f if line.strip()]
     return result
 
 # メイン処理
@@ -131,11 +130,11 @@ if __name__ == "__main__":
             all_info.append(data)
  
         # 改ページ処理を抜ける
-        if page_counter == PAGE_MAX:
+        if page_counter == config.PAGE_MAX:
             break
  
         # 間隔を設ける(秒単位）
-        time.sleep(INTERVAL_TIME)
+        time.sleep(config.INTERVAL_TIME)
  
     # 閉じる
     driver.quit()
@@ -143,6 +142,9 @@ if __name__ == "__main__":
     # 全部の情報をまとめて出力
     print(all_info)
  
+    # 実行日時を取得してファイル名に追加
+    current_time = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+    filename = f'data/processed/scraping_data_{current_time}.json'
     # JSONファイルに保存
-    with open('data/processed/scraping_data.json', 'w', encoding='utf-8') as f:
+    with open(filename, 'w', encoding='utf-8') as f:
         json.dump(all_info, f, ensure_ascii=False, indent=4)

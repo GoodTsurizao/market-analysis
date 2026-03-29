@@ -1,0 +1,29 @@
+[
+    {
+        "stock_code": "1375",
+        "market": "東証プライム",
+        "company_name": "ユキグニファクトリー",
+        "characteristics": "マイタケ軸にキノコ量産、蘭のマッシュルーム専業買収、素材生かす加工品育成、神明HD傘下",
+        "market_theme": [
+            "人工肉"
+        ]
+    },
+    {
+        "stock_code": "1376",
+        "market": "東証スタンダード",
+        "company_name": "カネコ種苗",
+        "characteristics": "野菜・牧草種子など種苗事業や農薬が収益柱。農業資材や花きも販売。利益は下期の比重高い",
+        "market_theme": [
+            "花き"
+        ]
+    },
+    {
+        "stock_code": "1377",
+        "market": "東証プライム",
+        "company_name": "サカタのタネ",
+        "characteristics": "野菜と花きの種苗で世界上位、米州やインド等成長市場に投資、国内は農業資材や造園緑化強化",
+        "market_theme": [
+            "インド"
+        ]
+    }
+]

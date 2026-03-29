@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株データ分析</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        form { margin-bottom: 20px; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        pre { background-color: #f4f4f4; padding: 10px; border: 1px solid #ddd; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>株データ分析メインページ</h1>
+    <p>以下のリンクから各機能にアクセスしてください。</p>
+    
+    <ul>
+        <li><a href="/scrape">スクレイピング実行</a></li>
+        <li><a href="/analyze">データ分析</a></li>
+        <li><a href="/settings">設定編集</a></li>
+    </ul>
+    
+    {% if output %}
+    <h2>分析結果</h2>
+    <pre>{{ output }}</pre>
+    {% endif %}
+</body>
+</html>

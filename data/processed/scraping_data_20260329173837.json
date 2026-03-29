@@ -1,0 +1,389 @@
+[
+    {
+        "stock_code": "6702",
+        "market": "東証プライム",
+        "company_name": "富士通",
+        "characteristics": "ITサービス国内上位。官公庁・金融・流通向け多い。コンサル機能を強化し、DX関連に注力",
+        "market_theme": [
+            "DX化支援"
+        ]
+    },
+    {
+        "stock_code": "9432",
+        "market": "東証プライム",
+        "company_name": "NTT",
+        "characteristics": "NTTグループ持株会社。ドコモ主力。固定電話独占、光回線高シェア。海外開拓・提携に注力",
+        "market_theme": [
+            "データセンター"
+        ]
+    },
+    {
+        "stock_code": "9433",
+        "market": "東証プライム",
+        "company_name": "KDDI",
+        "characteristics": "総合通信大手。携帯・光回線を展開。金融など非通信伸ばしライフデザイン企業への脱皮模索中",
+        "market_theme": [
+            "データセンター"
+        ]
+    },
+    {
+        "stock_code": "7203",
+        "market": "東証プライム",
+        "company_name": "トヨタ自動車",
+        "characteristics": "4輪世界首位。国内シェア3割超。傘下に日野、ダイハツ。SUBARU、マツダ、スズキと提携",
+        "market_theme": [
+            "TSMC"
+        ]
+    },
+    {
+        "stock_code": "6902",
+        "market": "東証プライム",
+        "company_name": "デンソー",
+        "characteristics": "自動車部品で国内最大、世界2位。トヨタ系。熱機器・エンジン・駆動系など広範囲。技術力に定評",
+        "market_theme": [
+            "TSMC"
+        ]
+    },
+    {
+        "stock_code": "8015",
+        "market": "東証プライム",
+        "company_name": "豊田通商",
+        "characteristics": "トヨタ系の総合商社、06年トーメン合併。自動車関連事業で営業利益の7割稼ぐ。アフリカ強い",
+        "market_theme": [
+            "インド"
+        ]
+    },
+    {
+        "stock_code": "8058",
+        "market": "東証プライム",
+        "company_name": "三菱商事",
+        "characteristics": "総合商社大手。三菱グループ中核。原料炭等の資源筆頭に機械、食品、化学品等の事業基盤厚い",
+        "market_theme": [
+            "洋上風力発電"
+        ]
+    },
+    {
+        "stock_code": "8001",
+        "market": "東証プライム",
+        "company_name": "伊藤忠商事",
+        "characteristics": "総合商社大手。非財閥系の雄。繊維や食料、中国に強い。傘下にファミリーマートなどの有力企業",
+        "market_theme": [
+            "空飛ぶクルマ"
+        ]
+    },
+    {
+        "stock_code": "8031",
+        "market": "東証プライム",
+        "company_name": "三井物産",
+        "characteristics": "三井グループ中核の総合商社。鉄鉱石権益生産量は国内断トツ。LNG、モビリティ等にも強み",
+        "market_theme": [
+            "累進配当"
+        ]
+    },
+    {
+        "stock_code": "8306",
+        "market": "東証プライム",
+        "company_name": "三菱UFJフィナンシャル・グループ",
+        "characteristics": "国内最大の民間金融グループ。銀行、信託、証券、アセマネ、カード等。米州、アジアでの展開進む",
+        "market_theme": [
+            "ラピダス"
+        ]
+    },
+    {
+        "stock_code": "8766",
+        "market": "東証プライム",
+        "company_name": "東京海上ホールディングス",
+        "characteristics": "メガ損保で首位級、東京海上日動が主体。欧米柱の海外保険事業はM&Aで急拡大。生保も育成",
+        "market_theme": [
+            "政策保有株"
+        ]
+    },
+    {
+        "stock_code": "8591",
+        "market": "東証プライム",
+        "company_name": "オリックス",
+        "characteristics": "リース手始めに保険、不動産など多角化、海外展開突出。エネルギー、空港運営など事業投資も",
+        "market_theme": [
+            "インバウンド"
+        ]
+    },
+    {
+        "stock_code": "4578",
+        "market": "東証プライム",
+        "company_name": "大塚ホールディングス",
+        "characteristics": "国内製薬大手で抗精神病薬が主力。ポカリスエットなど機能性食品も拡大。世界90カ所に工場",
+        "market_theme": [
+            "人工肉"
+        ]
+    },
+    {
+        "stock_code": "7733",
+        "market": "東証プライム",
+        "company_name": "オリンパス",
+        "characteristics": "世界シェア7割の消化器内視鏡など医療分野に集中。デジカメに続き、祖業の顕微鏡も売却へ",
+        "market_theme": [
+            "モノ言う株主"
+        ]
+    },
+    {
+        "stock_code": "2802",
+        "market": "東証プライム",
+        "company_name": "味の素",
+        "characteristics": "調味料最大手で海外も展開、コーヒー、冷凍ギョーザ強い。医薬用・食品用アミノ酸、電子材料も",
+        "market_theme": [
+            "累進配当"
+        ]
+    },
+    {
+        "stock_code": "4452",
+        "market": "東証プライム",
+        "company_name": "花王",
+        "characteristics": "トイレタリー国内首位、化粧品でも大手。原料からの一貫生産。独自の物流・販社システム所有",
+        "market_theme": [
+            "インバウンド"
+        ]
+    },
+    {
+        "stock_code": "2503",
+        "market": "東証プライム",
+        "company_name": "キリンホールディングス",
+        "characteristics": "国内ビール大手。海外は豪州が主力。健康関連が拡大中。傘下にファンケルや医薬の協和キリン",
+        "market_theme": [
+            "ビール"
+        ]
+    },
+    {
+        "stock_code": "3382",
+        "market": "東証プライム",
+        "company_name": "セブン&アイ・ホールディングス",
+        "characteristics": "国内流通首位級。日米コンビニが柱。23年百貨店売却。25年6月に銀行、9月にスーパー等分離",
+        "market_theme": [
+            "累進配当"
+        ]
+    },
+    {
+        "stock_code": "9843",
+        "market": "東証プライム",
+        "company_name": "ニトリホールディングス",
+        "characteristics": "全国トップの家具・インテリア製造小売り。海外に自社工場も。傘下にホームセンターの島忠",
+        "market_theme": [
+            "ベトナム"
+        ]
+    },
+    {
+        "stock_code": "9503",
+        "market": "東証プライム",
+        "company_name": "関西電力",
+        "characteristics": "東京電力に次ぐ業界2位。関西財界の雄。原発依存度高い。ガス・情報通信・不動産も展開",
+        "market_theme": [
+            "データセンター"
+        ]
+    },
+    {
+        "stock_code": "9020",
+        "market": "東証プライム",
+        "company_name": "東日本旅客鉄道",
+        "characteristics": "鉄道最大手。首都圏・東日本が地盤。不動産賃貸や駅ナカ物販事業が成長。『Suica』を育成",
+        "market_theme": [
+            "インバウンド"
+        ]
+    },
+    {
+        "stock_code": "4063",
+        "market": "東証プライム",
+        "company_name": "信越化学工業",
+        "characteristics": "塩化ビニル樹脂、半導体シリコンウエハで世界首位。ケイ素樹脂、フォトレジスト等も。好財務",
+        "market_theme": [
+            "塩化ビニル樹脂"
+        ]
+    },
+    {
+        "stock_code": "6861",
+        "market": "東証プライム",
+        "company_name": "キーエンス",
+        "characteristics": "FAセンサーなど検出・計測制御機器大手。生産は国内工場軸に外注。持分にジャストシステム",
+        "market_theme": [
+            "半導体関連"
+        ]
+    },
+    {
+        "stock_code": "6367",
+        "market": "東証プライム",
+        "company_name": "ダイキン工業",
+        "characteristics": "エアコン世界首位級。国内は業務用断トツ。M&Aも駆使し各国で存在感。フッ素化学事業も",
+        "market_theme": [
+            "インド"
+        ]
+    },
+    {
+        "stock_code": "4684",
+        "market": "東証プライム",
+        "company_name": "オービック",
+        "characteristics": "独立系SI。ERP(統合業務ソフト)で中小・中堅向け首位、大企業向けも深耕。持分にOBC",
+        "market_theme": [
+            "クラウド"
+        ]
+    },
+    {
+        "stock_code": "2327",
+        "market": "東証プライム",
+        "company_name": "日鉄ソリューションズ",
+        "characteristics": "日本製鉄系SIで、同社依存度は約20%。製造、流通、金融系システム構築に強み。配当性向50%",
+        "market_theme": [
+            "DX化支援"
+        ]
+    },
+    {
+        "stock_code": "3774",
+        "market": "東証プライム",
+        "company_name": "インターネットイニシアティブ",
+        "characteristics": "ネット接続の草分け。法人向けシステム構築、クラウド、セキュリティに強い。MVNO大手",
+        "market_theme": [
+            "生成AI"
+        ]
+    },
+    {
+        "stock_code": "7259",
+        "market": "東証プライム",
+        "company_name": "アイシン",
+        "characteristics": "トヨタ系部品大手。分社経営見直しで子会社AWと21年4月統合。AT(自動変速機)世界首位",
+        "market_theme": [
+            "EV関連"
+        ]
+    },
+    {
+        "stock_code": "3116",
+        "market": "東証プライム",
+        "company_name": "トヨタ紡織",
+        "characteristics": "トヨタ系。アラコ、タカニチと合併し、内装品・自動車フィルター国内首位、内装品で世界4位",
+        "market_theme": [
+            "インド"
+        ]
+    },
+    {
+        "stock_code": "2768",
+        "market": "東証プライム",
+        "company_name": "双日",
+        "characteristics": "総合商社。03年に日商岩井とニチメンが統合。自動車、航空、肥料に強み。持分で鉄鋼、LNG",
+        "market_theme": [
+            "累進配当"
+        ]
+    },
+    {
+        "stock_code": "8002",
+        "market": "東証プライム",
+        "company_name": "丸紅",
+        "characteristics": "芙蓉グループの総合商社大手。穀物、発電で商社首位級。プラントや輸送機、農業化学品に強み",
+        "market_theme": [
+            "空飛ぶクルマ"
+        ]
+    },
+    {
+        "stock_code": "5831",
+        "market": "東証プライム",
+        "company_name": "しずおかフィナンシャルグループ",
+        "characteristics": "地銀最上位級の静岡銀行が中核。傘下に証券やリース、コンサルなど。関連会社にマネックスG",
+        "market_theme": [
+            "トランプ関税"
+        ]
+    },
+    {
+        "stock_code": "7186",
+        "market": "東証プライム",
+        "company_name": "横浜フィナンシャルグループ",
+        "characteristics": "傘下に横浜銀、東日本銀など。神奈川と東京軸に9都府県展開。25年10月に横浜FGへ商号変更",
+        "market_theme": [
+            "神奈川"
+        ]
+    },
+    {
+        "stock_code": "8439",
+        "market": "東証プライム",
+        "company_name": "東京センチュリー",
+        "characteristics": "伊藤忠系、旧第一勧銀系が合併したリース大手。銀行色薄く経営に自由度。事業投資、海外を強化",
+        "market_theme": [
+            "リース"
+        ]
+    },
+    {
+        "stock_code": "4536",
+        "market": "東証プライム",
+        "company_name": "参天製薬",
+        "characteristics": "緑内障、加齢黄斑変性、ドライアイ治療薬など眼科用医薬品首位。一般用目薬『サンテ』が有名",
+        "market_theme": [
+            "構造改革"
+        ]
+    },
+    {
+        "stock_code": "2897",
+        "market": "東証プライム",
+        "company_name": "日清食品ホールディングス",
+        "characteristics": "即席ラーメン先駆。カップ麺は国内シェア5割超。海外も米国軸に展開。日清ヨークや湖池屋も",
+        "market_theme": [
+            "即席麺"
+        ]
+    },
+    {
+        "stock_code": "2267",
+        "market": "東証プライム",
+        "company_name": "ヤクルト本社",
+        "characteristics": "乳酸生菌飲料主力。訪問販売員による強固な販売網。化粧品も。拠点拡大で海外収益が柱に",
+        "market_theme": [
+            "中国"
+        ]
+    },
+    {
+        "stock_code": "2229",
+        "market": "東証プライム",
+        "company_name": "カルビー",
+        "characteristics": "スナック菓子最大手。ポテトチップスやじゃがりこ、シリアルなど展開。米、中、英など海外展開",
+        "market_theme": [
+            "英国"
+        ]
+    },
+    {
+        "stock_code": "7453",
+        "market": "東証プライム",
+        "company_name": "良品計画",
+        "characteristics": "『無印良品』で衣服、生活雑貨、食品を展開。半数超が中国ほか海外店舗。各店の個店経営を強化",
+        "market_theme": [
+            "中国"
+        ]
+    },
+    {
+        "stock_code": "3197",
+        "market": "東証プライム",
+        "company_name": "すかいらーくホールディングス",
+        "characteristics": "ファミレス最大手。主力は『ガスト』。中華『バーミヤン』や和食『夢庵』など多業態。14年に再上場",
+        "market_theme": [
+            "M&A"
+        ]
+    },
+    {
+        "stock_code": "9021",
+        "market": "東証プライム",
+        "company_name": "西日本旅客鉄道",
+        "characteristics": "JR西日本。北陸、近畿、中国、九州北部で営業。山陽新幹線と上越妙高以西の北陸新幹線を運営",
+        "market_theme": [
+            "インバウンド"
+        ]
+    },
+    {
+        "stock_code": "9502",
+        "market": "東証プライム",
+        "company_name": "中部電力",
+        "characteristics": "電力3位。浜岡原発3基停止中。東電との合弁に火力発電事業を統合。M&Aで海外展開加速",
+        "market_theme": [
+            "アンモニア"
+        ]
+    },
+    {
+        "stock_code": "6645",
+        "market": "東証プライム",
+        "company_name": "オムロン",
+        "characteristics": "稼ぎ頭は制御機器。リレー等電子部品や鉄道システム、ヘルスケアも展開。子会社にJMDC",
+        "market_theme": [
+            "半導体関連"
+        ]
+    }
+]

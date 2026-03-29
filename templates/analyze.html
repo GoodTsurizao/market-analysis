@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>データ分析</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        form { margin-bottom: 20px; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        pre { background-color: #f4f4f4; padding: 10px; border: 1px solid #ddd; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>データ分析</h1>
+    <p><a href="/">ホームに戻る</a></p>
+    
+    <form method="post">
+        <label for="file">分析するファイル:</label>
+        <select name="file" id="file" required>
+            {% for f in files %}
+            <option value="{{ f }}">{{ f }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit">分析実行</button>
+    </form>
+    
+    {% if output %}
+    <h2>分析結果</h2>
+    <pre>{{ output }}</pre>
+    {% endif %}
+</body>
+</html>

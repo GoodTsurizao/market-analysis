@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設定編集</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        form { margin-bottom: 20px; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        pre { background-color: #f4f4f4; padding: 10px; border: 1px solid #ddd; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>設定編集</h1>
+    <p><a href="/">ホームに戻る</a></p>
+    
+    <h2>スクレイピング設定</h2>
+    <form method="post">
+        <label>改ページ最大: <input type="number" name="page_max" value="{{ page_max }}" min="1"></label>
+        <br>
+        <label>遷移間隔（秒）: <input type="number" name="interval_time" value="{{ interval_time }}" min="0" step="0.1"></label>
+        <br><br>
+        <button type="submit" name="action" value="save_config">設定保存</button>
+    </form>
+    
+    <h2>コード編集</h2>
+    <form method="post">
+        <textarea name="codes" rows="10" cols="50">{{ codes }}</textarea>
+        <br><br>
+        <button type="submit" name="action" value="save_codes">保存</button>
+    </form>
+    
+    {% if output %}
+    <h2>結果</h2>
+    <pre>{{ output }}</pre>
+    {% endif %}
+</body>
+</html>
