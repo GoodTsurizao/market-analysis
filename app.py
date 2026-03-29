@@ -4,7 +4,7 @@ import sys
 import os
 import re
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 
 @app.route('/', methods=['GET'])
 def index():
@@ -20,18 +20,21 @@ def scrape_page():
         output = "スクレイピング実行結果:\n" + result.stdout
         if result.stderr:
             output += "\nエラー:\n" + result.stderr
-    return render_template('scrape.html', output=output)
+    return render_template('pages/scrape.html', output=output)
 
 @app.route('/analyze', methods=['GET', 'POST'])
 def analyze_page():
     # data/processed 内の JSON ファイルリストを取得
     processed_dir = os.path.join(os.path.dirname(__file__), 'data', 'processed')
-    files = [f for f in os.listdir(processed_dir) if f.endswith('.json')]
+    files = sorted(
+        [f for f in os.listdir(processed_dir) if f.endswith('.json')],
+        reverse=True
+    )
     
     output = ""
     if request.method == 'POST':
         selected_file = request.form.get('file')
-        if selected_file:
+        if selected_file and selected_file in files:
             # 選択されたファイルのフルパス
             file_path = os.path.join(processed_dir, selected_file)
             # 分析スクリプトを実行（ファイルパスを引数として渡す）
@@ -40,7 +43,7 @@ def analyze_page():
             output = result.stdout
             if result.stderr:
                 output += "\nエラー:\n" + result.stderr
-    return render_template('analyze.html', files=files, output=output)
+    return render_template('pages/analyze.html', files=files, output=output)
 
 @app.route('/settings', methods=['GET', 'POST'])
 def settings_page():
@@ -68,13 +71,14 @@ def settings_page():
     
     output = ""
     if request.method == 'POST':
-        if 'save_codes' in request.form:
+        action = request.form.get('action')
+        if action == 'save_codes':
             new_codes = request.form.get('codes', '')
             with open(codes_path, 'w', encoding='utf-8') as f:
                 f.write(new_codes)
             codes = new_codes
             output = "codes.txt を保存しました。"
-        elif 'save_config' in request.form:
+        elif action == 'save_config':
             new_page_max = request.form.get('page_max', '3')
             new_interval = request.form.get('interval_time', '2')
             print(f"Saving config: page_max={new_page_max}, interval={new_interval}")
@@ -87,7 +91,7 @@ def settings_page():
             interval_time = new_interval
             output = "scraping_config.py を保存しました。"
     
-    return render_template('settings.html', codes=codes, page_max=page_max, interval_time=interval_time, output=output)
+    return render_template('pages/settings.html', codes=codes, page_max=page_max, interval_time=interval_time, output=output)
 
 if __name__ == '__main__':
     app.run(debug=True)
