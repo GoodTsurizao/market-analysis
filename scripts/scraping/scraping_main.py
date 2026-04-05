@@ -36,6 +36,7 @@ def get_data_from_source(src):
     try:
         company_name = ""
         stock_code = ""
+        listing_date = ""
         market = ""
         characteristics = ""
         industry = []
@@ -49,41 +50,62 @@ def get_data_from_source(src):
             if stock_code_elem:
                 stock_code = stock_code_elem.text.strip()
 
-            # 市場区分を取得
-            market_elem = main_elem.find("span", class_=config.MARKET_CLASS)
-            if market_elem:
-                market = market_elem.text.strip()
+        company_info_elem = soup.find("div", class_=config.COMPANY_INFO_CLASS, id=config.COMPANY_INFO_ID)
+        if company_info_elem: # プロフィールコンテナが見つかった場合のみ処理を続行
+            # 上場日を取得
+            listing_date_elem = company_info_elem.find("table")
+            if listing_date_elem :
+                listing_date_text = "".join(listing_date_elem.stripped_strings)
+                start_marker = "上場年月"
+                end_marker = "設立年月"
+                start_index = listing_date_text.find(start_marker)
+                end_index = listing_date_text.find(end_marker, start_index + len(start_marker))
 
-            # 社名を取得
-            company_name_elem = soup.find("div", class_=config.COMPANY_NAME_CLASS)
-            if company_name_elem:
-                company_name = company_name_elem.text
-            
-            # 特色を取得
-            characteristics_elem = soup.find("dl", class_=config.CHARACTERISTICS_CLASS)
-            if characteristics_elem:
-                characteristics = characteristics_elem.text.strip().split('\n')[1].strip()
+                if start_index != -1 and end_index != -1:
+                    listing_date = listing_date_text[start_index + len(start_marker):end_index].strip()
+                    if "." in listing_date:
+                        listing_year, listing_month = listing_date.split(".")
+                        listing_date = f"{listing_year}-{listing_month.zfill(2)}-01"
+                    else:
+                        listing_date = ""
 
-            # 所属業界を取得
-            industry_elem = soup.find("div", class_=config.INDUSTRY_CLASS)
-            if industry_elem:
-                industry = industry_elem.text.strip()
-
-            # 市場テーマを取得
-            market_theme_elem = soup.find("div", class_=config.MARKET_THEME_CLASS)
-            if market_theme_elem:
-                market_theme_list = market_theme_elem.text.strip()
-                for theme in market_theme_list.split('\n'):
-                    if theme.strip() and theme.strip() != "他":
-                        market_theme.append(theme.strip())
+#            # 市場区分を取得
+#            market_elem = main_elem.find("span", class_=config.MARKET_CLASS)
+#            if market_elem:
+#                market = market_elem.text.strip()
+#
+#            # 社名を取得
+#            company_name_elem = soup.find("div", class_=config.COMPANY_NAME_CLASS)
+#            if company_name_elem:
+#                company_name = company_name_elem.text
+#            
+#            # 特色を取得
+#            characteristics_elem = soup.find("dl", class_=config.CHARACTERISTICS_CLASS)
+#            if characteristics_elem:
+#                characteristics = characteristics_elem.text.strip().split('\n')[1].strip()
+#
+#            # 所属業界を取得
+#            industry_elem = soup.find("div", class_=config.INDUSTRY_CLASS)
+#            if industry_elem:
+#                industry = industry_elem.text.strip()
+#
+#            # 市場テーマを取得
+#            market_theme_elem = soup.find("div", class_=config.MARKET_THEME_CLASS)
+#            if market_theme_elem:
+#                market_theme_list = market_theme_elem.text.strip()
+#                for theme in market_theme_list.split('\n'):
+#                    if theme.strip() and theme.strip() != "他":
+#                        market_theme.append(theme.strip())
 
         info = {
             "stock_code": stock_code,
-            "market": market,
-            "company_name": company_name,
-            "characteristics": characteristics,
+            "listing_date": listing_date
+#            ,
+#            "market": market,
+#            "company_name": company_name,
+#            "characteristics": characteristics,
 #            "industry": industry,
-            "market_theme": market_theme
+ #           "market_theme": market_theme
         }
     
         return info
@@ -118,16 +140,20 @@ if __name__ == "__main__":
     for code in code_list:
  
         page_counter = page_counter + 1
-        target_url = base_url + str(code) + "/"
+        target_url = base_url + str(code) + "/corporate"
  
         # ページのソース取得
-        source = get_source_from_page_main(driver, target_url)
+        try:
+            source = get_source_from_page_main(driver, target_url)
 
         # ソースからデータ抽出
-        data = get_data_from_source(source)
+            data = get_data_from_source(source)
  
-        if data:
-            all_info.append(data)
+            if data:
+                all_info.append(data)
+        except Exception:
+            print(f"timeout or fetch error: code={code}")
+            continue
  
         # 改ページ処理を抜ける
         if page_counter == config.PAGE_MAX:
