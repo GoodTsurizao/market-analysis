@@ -152,6 +152,29 @@ https://shikiho.toyokeizai.net/stocks/{code}/
 pip install -r requirements.txt
 ```
 
+### 2. PostgreSQL 接続設定
+
+`PostgreSQL` を使う場合は、プロジェクト直下で `.env.example` を `.env` にコピーして接続情報を設定します。
+
+```bash
+copy .env.example .env
+```
+
+`.env` の主な項目:
+
+- `POSTGRES_HOST`
+- `POSTGRES_PORT`
+- `POSTGRES_DB`
+- `POSTGRES_USER`
+- `POSTGRES_PASSWORD`
+- `POSTGRES_SSLMODE`
+
+接続確認:
+
+```bash
+python scripts/db/test_postgres_connection.py
+```
+
 必要に応じて、実行環境に以下の追加パッケージもインストールしてください。
 
 - `selenium`
