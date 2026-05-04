@@ -175,17 +175,58 @@ copy .env.example .env
 python scripts/db/test_postgres_connection.py
 ```
 
+### 3. PostgreSQL SQL ファイルの保存場所
+
+PostgreSQL のDB定義と一部マスタデータは、SQL ファイルとして以下に保存します。
+
+```text
+data/postgresql/sql/
+├─ ddl/
+│  ├─ schemas/
+│  ├─ tables/
+│  ├─ views/
+│  ├─ sequences/
+│  ├─ indexes/
+│  ├─ foreign_keys/
+│  ├─ functions/
+│  ├─ triggers/
+│  └─ comments/
+└─ dml/
+   └─ tables/
+```
+
+DDL は、スキーマ・テーブル・ビュー・シーケンス・インデックス・外部キー・関数・トリガー・コメントを、オブジェクトごとに 1 SQL ファイルとして保存します。
+
+DML は、マスタとして利用する以下のテーブルデータを保存します。
+
+- `stock_analysis.ticker_master`
+- `stock_analysis.mart_daily_price_raw`
+
+SQL ファイルをDBから再出力する場合:
+
+```bash
+python scripts/db/export_postgres_ddl.py --schema stock_analysis
+python scripts/db/export_postgres_dml.py --schema stock_analysis
+```
+
+出力漏れを確認する場合:
+
+```bash
+python scripts/db/check_postgres_ddl_export.py
+python scripts/db/check_postgres_dml_export.py --schema stock_analysis
+```
+
 必要に応じて、実行環境に以下の追加パッケージもインストールしてください。
 
 - `selenium`
 - `beautifulsoup4`
 - `lxml`
 
-### 2. ChromeDriver の配置
+### 4. ChromeDriver の配置
 
 `drivers/chromedriver.exe` を配置し、ローカルの Chrome バージョンと一致するものを使用してください。
 
-### 3. アプリ起動
+### 5. アプリ起動
 
 ```bash
 python app.py
