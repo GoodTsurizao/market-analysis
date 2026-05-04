@@ -2,10 +2,12 @@
 # スクレイピングで使用するクラス名などの設定
 
 # スクレイピング設定
-PAGE_MAX = 4445 # 改ページ（最大）
-INTERVAL_TIME = 2 # 遷移間隔（秒）
+PAGE_MAX = 884 # 改ページ（最大）
+INTERVAL_TIME = 1 # 遷移間隔（秒）
 
-# メインぺージのコンテナ
+# ----------------------------------------------------------------------
+
+# mainのコンテナ
 MAIN_CLASS = "overview__main"
 
 # メインページ
@@ -23,6 +25,18 @@ COMPANY_INFO_ID = "companyBasicInformation"
 #プロフィール
 LISTING_DATE_CLASS = "company-content__profile"
 
+# ----------------------------------------------------------------------
 
+# main2のコンテナ
+MAIN2_CLASS = "clearfix"
+ZIKA_GAKU_CLASS = "v_zika2" # 時価総額(td)
+STOCK_CODE_CLASS2 = "inline-block" # 証券コード(span)
+
+# ----------------------------------------------------------------------
+
+# main3のコンテナ
+MAIN3_CLASS = "clearfix"
+MAIN3__CLASS = "v_zika2" # 時価総額(td)
+MAIN3__CLASS = "inline-block" # 証券コード(span)
 
 

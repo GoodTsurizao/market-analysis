@@ -1,4 +1,4 @@
-# 四季報オンラインから取得する用
+# 上場日を取得する用のスクレイピング
 
 import bs4 # BeautifulSoupをインポート
 import traceback # エラーの内容を出力するためにインポート
@@ -28,7 +28,7 @@ def get_driver():
 # URLからページのソースを取得する（固定）
 def get_source_from_page_main(driver, url):
     driver.get(url) # URLにアクセス
-    WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.TAG_NAME, 'body'))) # ページが完全に読み込まれるまで待機
+    WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.TAG_NAME, 'body'))) # ページが完全に読み込まれるまで待機
     page = driver.page_source # ページのソースを取得
     return page
 
@@ -36,78 +36,25 @@ def get_source_from_page_main(driver, url):
 def get_data_from_source(src):
     soup = bs4.BeautifulSoup(src, features='lxml')  #BeautifulSoupオブジェクトを作成
     try:
-        company_name = ""
         stock_code = ""
-        listing_date = ""
-        market = ""
-        characteristics = ""
-        industry = []
-        market_theme = []
+        zika_gaku = ""
 
         # 会社基本情報 取得
-        main_elem = soup.find("div", class_=config.MAIN_CLASS)
+        main_elem = soup.find("section", class_=config.MAIN2_CLASS)
         if main_elem: # メインコンテナが見つかった場合のみ処理を続行
-                # 証券コードを取得
-                stock_code_elem = main_elem.find("span", class_=config.STOCK_CODE_CLASS)
-                if stock_code_elem:
-                    stock_code = stock_code_elem.text.strip()
+            # 証券コードを取得
+            stock_code_elem = main_elem.find("span", class_=config.STOCK_CODE_CLASS2)
+            if stock_code_elem:
+                stock_code = stock_code_elem.text
 
-        company_info_elem = soup.find("div", class_=config.COMPANY_INFO_CLASS, id=config.COMPANY_INFO_ID)
-        if company_info_elem: # プロフィールコンテナが見つかった場合のみ処理を続行
-            # 上場日を取得
-            listing_date_elem = company_info_elem.find("table")
-            if listing_date_elem :
-                listing_date_text = "".join(listing_date_elem.stripped_strings)
-                start_marker = "上場年月"
-                end_marker = "設立年月"
-                start_index = listing_date_text.find(start_marker)
-                end_index = listing_date_text.find(end_marker, start_index + len(start_marker))
-
-                if start_index != -1 and end_index != -1:
-                    listing_date = listing_date_text[start_index + len(start_marker):end_index].strip()
-                    if "." in listing_date:
-                        listing_year, listing_month = listing_date.split(".")
-                        listing_date = f"{listing_year}-{listing_month.zfill(2)}-01"
-                    else:
-                        listing_date = ""
-
-#            # 市場区分を取得
-#            market_elem = main_elem.find("span", class_=config.MARKET_CLASS)
-#            if market_elem:
-#                market = market_elem.text.strip()
-#
-#            # 社名を取得
-#            company_name_elem = soup.find("div", class_=config.COMPANY_NAME_CLASS)
-#            if company_name_elem:
-#                company_name = company_name_elem.text
-#            
-#            # 特色を取得
-#            characteristics_elem = soup.find("dl", class_=config.CHARACTERISTICS_CLASS)
-#            if characteristics_elem:
-#                characteristics = characteristics_elem.text.strip().split('\n')[1].strip()
-#
-#            # 所属業界を取得
-#            industry_elem = soup.find("div", class_=config.INDUSTRY_CLASS)
-#            if industry_elem:
-#                industry = industry_elem.text.strip()
-#
-#            # 市場テーマを取得
-#            market_theme_elem = soup.find("div", class_=config.MARKET_THEME_CLASS)
-#            if market_theme_elem:
-#                market_theme_list = market_theme_elem.text.strip()
-#                for theme in market_theme_list.split('\n'):
-#                    if theme.strip() and theme.strip() != "他":
-#                        market_theme.append(theme.strip())
+            # 時価総額を取得
+            zika_gaku_elem = main_elem.find("td", class_=config.ZIKA_GAKU_CLASS)
+            if zika_gaku_elem:
+                zika_gaku = zika_gaku_elem.text
 
         info = {
-            "stock_code": stock_code,
-            "listing_date": listing_date
-#            ,
-#            "market": market,
-#            "company_name": company_name,
-#            "characteristics": characteristics,
-#            "industry": industry,
- #           "market_theme": market_theme
+            "zika": zika_gaku,
+            "stock_code": stock_code
         }
     
         return info
@@ -129,7 +76,7 @@ if __name__ == "__main__":
  
     code_list = get_code_list()
  
-    base_url = "https://shikiho.toyokeizai.net/stocks/"
+    base_url = "https://kabutan.jp/stock/?code="
  
     # ブラウザのdriver取得
     driver = get_driver()
@@ -142,8 +89,9 @@ if __name__ == "__main__":
     for code in code_list:
  
         page_counter = page_counter + 1
-        target_url = base_url + str(code) + "/corporate"
- 
+#        target_url = base_url + str(code) + "/corporate"
+        target_url = base_url + str(code)
+
         # ページのソース取得
         try:
             source = get_source_from_page_main(driver, target_url)
